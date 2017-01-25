@@ -19,7 +19,14 @@ mysql> SHOW DATABASES;
 mysql> USE decodemtl_addressbook;
 Database changed
 
-create table Account (id INT NOT NULL AUTO_INCREMENT, email VARCHAR(255), password VARCHAR(40), createdOn DATETIME, modifiedOn DATETIME, PRIMARY KEY(id));
+create table Account (
+    id INT NOT NULL AUTO_INCREMENT, 
+    email VARCHAR(255), 
+    password VARCHAR(40), 
+    createdOn DATETIME, 
+    modifiedOn DATETIME, 
+    PRIMARY KEY(id)
+);
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> describe Account;
@@ -35,7 +42,14 @@ mysql> describe Account;
 5 rows in set (0.00 sec)
 
 
-CREATE TABLE AddressBook (id INT not null auto_increment, accountId INT, name VARCHAR(255), createdOn DATETIME, modifiedOn DATETIME, PRIMARY KEY(id));     
+CREATE TABLE AddressBook (
+    id INT not null auto_increment, 
+    accountId INT, 
+    name VARCHAR(255), 
+    createdOn DATETIME, 
+    modifiedOn DATETIME, 
+    PRIMARY KEY(id)
+);     
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> describe AddressBook;
@@ -52,7 +66,15 @@ mysql> describe AddressBook;
 
 
 
-mysql> create table Entry (id INT NOT NULL AUTO_INCREMENT, addressBookId INT, firstName VARCHAR(255), lastName VARCHAR(255), birthday DATETIME ,type ENUM('phone', 'address', 'electronic-email') ,PRIMARY KEY (id));                                                                                                                              
+mysql> create table Entry (
+    id INT NOT NULL AUTO_INCREMENT, 
+    addressBookId INT, 
+    firstName VARCHAR(255), 
+    lastName VARCHAR(255), 
+    birthday DATETIME ,
+    type ENUM('phone', 'address', 'electronic-email'),
+    PRIMARY KEY (id)
+);                                                                                                                              
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> describe Entry;
@@ -68,7 +90,14 @@ mysql> describe Entry;
 +---------------+--------------------------------------------+------+-----+---------+----------------+
 6 rows in set (0.01 sec)
 
-mysql> CREATE TABLE Phone (id INT NOT NULL AUTO_INCREMENT , entryId INT, type ENUM('home','work','other'), subtype ENUM('landline','cellular','fax'),content VARCHAR(255) ,PRIMARY KEY(id));                            
+mysql> CREATE TABLE Phone (
+    id INT NOT NULL AUTO_INCREMENT, 
+    entryId INT, 
+    type ENUM('home','work','other'), 
+    subtype ENUM('landline','cellular','fax'),
+    content VARCHAR(255),
+    PRIMARY KEY(id)
+);                            
 Query OK, 0 rows affected (0.01 sec)
 
 mysql> DESCRIBE Phone;
@@ -84,7 +113,18 @@ mysql> DESCRIBE Phone;
 5 rows in set (0.00 sec)
 
 
-mysql> CREATE TABLE Address (id INT NOT NULL AUTO_INCREMENT, entryId INT, type ENUM('home','work','other'), addressLine1 VARCHAR(255), addressLine2 VARCHAR(255), city VARCHAR(255), province VARCHAR(128), country VARCHAR(128), postalCode VARCHAR(10), PRIMARY KEY (id));                                                                                      
+mysql> CREATE TABLE Address (
+    id INT NOT NULL AUTO_INCREMENT, 
+    entryId INT, 
+    type ENUM('home','work','other'), 
+    addressLine1 VARCHAR(255), 
+    addressLine2 VARCHAR(255), 
+    city VARCHAR(255), 
+    province VARCHAR(128), 
+    country VARCHAR(128), 
+    postalCode VARCHAR(10), 
+    PRIMARY KEY (id)
+);                                                                                      
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> DESCRIBE Address;
@@ -106,7 +146,13 @@ mysql> DESCRIBE Address;
 
 
 
-mysql> CREATE TABLE ElectronicMail (id INT NOT NULL AUTO_INCREMENT, entryId INT, type ENUM('home','work','other'), content VARCHAR(255), PRIMARY KEY (id));                                  
+mysql> CREATE TABLE ElectronicMail (
+    id INT NOT NULL AUTO_INCREMENT, 
+    entryId INT, 
+    type ENUM('home','work','other'), 
+    content VARCHAR(255), 
+    PRIMARY KEY (id)
+);                                  
 Query OK, 0 rows affected (0.03 sec)
 
 mysql> DESCRIBE ElectronicMail;

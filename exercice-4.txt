@@ -1,4 +1,11 @@
-mysql> select Entry.firstName, AddressBook.name FROM Entry LEFT JOIN AddressBook ON Entry.addressBookId = AddressBook.id WHERE AddressBook.name = "Pharetra Ut Limited";
+mysql> 
+SELECT Entry.firstName, AddressBook.name 
+FROM Entry 
+LEFT JOIN AddressBook 
+ON Entry.addressBookId = AddressBook.id 
+WHERE AddressBook.name = "Pharetra Ut Limited";
+
+
 +-------------+---------------------+
 | firstName   | name                |
 +-------------+---------------------+
