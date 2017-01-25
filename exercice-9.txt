@@ -1,0 +1,57 @@
+mysql> 
+SELECT distinct city 
+FROM Address 
+WHERE country 
+IN ('Canada', 'Austria', 'Isle fo Man', 'Ireland', 'Japan');
+
++----------------+
+| city           |
++----------------+
+| Dubbo          |
+| Jackson        |
+| Tauranga       |
+| Rzeszów        |
+| Cartago        |
+| Cagnes-sur-Mer |
+| Ceyhan         |
+| Houston        |
+| Galway         |
+| Pietraroja     |
+| Moulins        |
+| Anápolis       |
+| Assen          |
+| Shimla         |
+| ?slahiye       |
+| Edmundston     |
+| Satara         |
+| Angers         |
+| Siedlce        |
+| Chestermere    |
+| Tirrases       |
+| Zwickau        |
+| Belfast        |
+| Rollegem       |
+| Kraków         |
+| Milena         |
+| Cork           |
+| Bozeman        |
+| Pontevedra     |
+| Bodmin         |
+| Baulers        |
+| Alness         |
+| Springfield    |
+| Abbeville      |
+| San Francisco  |
+| Lasnigo        |
+| Terneuzen      |
+| Raj Nandgaon   |
+| Meridian       |
+| Mabompr?       |
+| Calmar         |
+| Hamburg        |
+| Quesada        |
+| Vienna         |
+| Berlin         |
+| Hillsboro      |
++----------------+
+46 rows in set (0.00 sec)
