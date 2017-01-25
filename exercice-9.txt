@@ -2,7 +2,7 @@ mysql>
 SELECT distinct city 
 FROM Address 
 WHERE country 
-IN ('Canada', 'Austria', 'Isle fo Man', 'Ireland', 'Japan');
+IN ('Canada', 'Austria', 'Isle of Man', 'Ireland', 'Japan');
 
 +----------------+
 | city           |
