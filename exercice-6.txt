@@ -1,0 +1,15 @@
+mysql> 
+SELECT Entry.firstName, Entry.lastName, Phone.* 
+FROM Entry 
+LEFT JOIN Phone 
+ON Entry.id = Phone.entryId 
+WHERE Entry.firstName = "Charlotte" 
+AND Entry.lastName = 'Jenkins';
+
++-----------+----------+------+---------+-------+----------+----------------+
+| firstName | lastName | id   | entryId | type  | subtype  | content        |
++-----------+----------+------+---------+-------+----------+----------------+
+| Charlotte | Jenkins  |  659 |    1057 | other | fax      | (110) 167-3420 |
+| Charlotte | Jenkins  | 1599 |    1057 | home  | landline | (605) 175-1334 |
++-----------+----------+------+---------+-------+----------+----------------+
+2 rows in set (0.01 sec)
