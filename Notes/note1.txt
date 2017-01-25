@@ -1,0 +1,25 @@
+HOW TO FIX THE DATA WITH OTHER PRESENTATION
+select * from Entry limit 10\G
+
+POUR TROUVER L ANNIVERSAIRE LE PLUS ANCIEN
+SELECT * FROM Entry WHERE birdthday  = (SELECT MIN(birthday) FROM Entry)\G;
+
+select
+    accountId,
+    count(*) as numAddressBooks
+from AddressBook
+group by accountId
+having count(*) = (
+    select max(numAddressBooks)
+    from (
+        select
+            accountId,
+            count(*) as numAddressBooks
+        from AddressBook
+        group by accountId
+    ) counts
+);
+
+counts represent the subquery and is an alias
+where is for columns
+having is for functions

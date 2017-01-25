@@ -1,0 +1,70 @@
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'aureroux',
+  password : '',
+  database : 'decodemtl_addressbook_import'
+});
+
+***********************
+
+connection.query('SHOW DATABASES', function(err, result){
+    if (err) {
+        console.log(err);
+    }
+    else {
+        result.forEach(function(row, i){
+            console.log("Database #" + i , row.Database);
+        };
+    }
+});
+
+***********************
+
+connection.query('SELECT * FROM AddressBook LIMIT 10', function(err, result){
+    if (err) {
+        console.log(err);
+    }
+    else {
+        result.forEach(function(row, i){
+            console.log(JSON.stringify(result, null, 4));
+        };
+    }
+});
+
+***********************
+
+connection.query("INSERT INTO users (username) VALUES ('john'), ('alice')", function(err, result){
+    if(err){
+        console.log(err)
+    } 
+    else {
+        console.log('result');
+    }
+    
+    connection.end();
+})
+
+
+***********************
+// This version is prone to SQL injection. I can input '); DROP ALL DATABASES; -- as my username and it will create a new destructive query
+prompt.get('username', function(err, answers) {
+    var username = answers.username;
+    
+    connection.query("INSERT INTO users (username) VALUES ('" + username + "')", function(err, result) {
+        console.log(err, result)
+    })
+})
+
+// The ? will be replaced in order by the values in the array. The values will be ESCAPED so that quotes cannot alter the meaning of the query
+prompt.get('username', function(err, answers) {
+    var username = answers.username;
+    
+    connection.query("INSERT INTO users (username,email) VALUES (?, ?)", [username, email], function(err, result) {
+        console.log(err, result)
+    })
+})
+
+*************************
+

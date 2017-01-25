@@ -1,0 +1,48 @@
+var mysql = require('promise-mysql');
+var prompt = require('prompt-promise');
+
+var connection = mysql.createPool({
+  host: 'localhost',
+  user: 'ziad_saab',
+  password: '',
+  database: 'decodemtl_addressbook_import',
+  connectionLimit: 10
+});
+
+// connection.query("SELECT * FROM AddressBook LIMIT 10")
+// .then(function(results) {
+//     console.log(results);
+// })
+
+function createUser() {
+    var username, email
+    return prompt('username')
+    .then(function(u) {
+        username = u;
+        return prompt('email')
+    })
+    .then(function(e) {
+        email = e;
+        return connection.query("INSERT INTO users VALUES (?,?)", [username, email]);
+    })
+    .then(function(result) {
+        return result;
+    })
+    .catch(function(err) {
+        if (err.errno === 1062) {
+            console.log('username already exists, try again');
+            return createUser();
+        }
+        else {
+            throw err;
+        }
+    })
+}
+
+createUser()
+.then(function(res) {
+    console.log(res);
+})
+.catch(function(err) {
+    console.log(err);
+})
