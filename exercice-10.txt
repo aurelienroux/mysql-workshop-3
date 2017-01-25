@@ -1,0 +1,3 @@
+mysql> UPDATE ElectronicMail SET type = 'temp' WHERE type = 'work';                                                                                                                                 
+Query OK, 690 rows affected, 690 warnings (0.02 sec)
+Rows matched: 690  Changed: 690  Warnings: 690
