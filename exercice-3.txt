@@ -1,0 +1,1 @@
+mysql> select distinct Lower(country) from Address ;
